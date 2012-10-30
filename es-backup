@@ -1,0 +1,23 @@
+#!/usr/bin/env node
+
+var program = require('commander');
+var EsBackup = require('./lib/esBackup').EsBackup;
+
+program
+  .version('0.0.1')
+  .option('-H, --host [host]', 'Elasticsearch server host', 'localhost')
+  .option('-p, --port [port]', 'Elasticsearch server port', 9200)
+  .option('-i, --index [index]', 'Elasticsearch index to dump from or to restore into', 'index')
+  .option('-r, --restore [file]', 'Restore dump from file [file]', null)
+  .option('-d, --dump [file]', 'Dump data into file [file]', null)
+  .parse(process.argv);
+
+var backup = new EsBackup(program.host, parseInt(program.port), program.index);;
+
+if (program.restore !== null) {
+  backup.restore(program.restore);
+} else if (program.dump !== null) {
+  backup.dump(program.dump);
+} else {
+  program.help()
+}

@@ -1,0 +1,15 @@
+{
+  "name": "es-backup",
+  "description": "Backup tool for Elasticsearch",
+  "version": "0.0.1",
+  "homepage": "http://www.oxys.net",
+  "repository": "git@github.com:oxys-net/node-es-backup.git",
+  "main": "server",
+  "dependencies": {
+      "elasticsearchclient": ">=0.1.4",
+      "async": "=0.1.10",
+      "byline" : "=2.0.3",
+      "commander" : "=1.0.5"
+  },
+  "engines": { "node": "*" }
+}
